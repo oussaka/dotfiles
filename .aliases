@@ -14,10 +14,12 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
+alias d="cd ~/Documents/Dropbox"
 alias dl="cd ~/Downloads"
-alias g="git"
+alias dt="cd ~/Desktop"
+alias p="cd ~/projects"
 alias h="history"
-alias gc=". /usr/local/bin/gitdate && git commit -v "
+
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -48,6 +50,8 @@ alias grep='grep --color=auto '
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
+
+alias please='sudo $(history -p \!\!)'
 
 # Get week number
 alias week='date +%V'
