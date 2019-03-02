@@ -23,6 +23,7 @@ dotfiles: ## Installs the dotfiles.
 	mkdir -p $(HOME)/.config;
 	ln -snf $(CURDIR)/i3 $(HOME)/.config;
 	ln -snf $(CURDIR)/i3blocks $(HOME)/.config;
+	ln -snf $(CURDIR)/i3lock-color $(HOME)/.config;
 
 	mkdir -p $(HOME)/.local/share;
 	ln -snf $(CURDIR)/.fonts $(HOME)/.local/share/fonts;

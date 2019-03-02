@@ -1,0 +1,3 @@
+[submodule "i3lock-color"]
+	path = i3lock-color
+	url = https://github.com/PandorasFox/i3lock-color.git
