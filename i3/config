@@ -530,6 +530,9 @@ assign [class="(?i)thunderbird"]                  $ws9
 #bindsym $mod+l exec "pkill -u $USER -USR1 dunst && lock -f DejaVuSans && pkill -u $USER -USR2 dunst"
 #bindsym $mod+l exec i3lock
 bindsym $mod+l exec ~/.config/i3/i3lock.sh
+
+bindsym XF86PowerOff exec ~/.config/i3/i3exit.sh suspend
+
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id ~/.config/i3/i3exit.sh lock, mode "default"
