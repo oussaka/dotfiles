@@ -69,14 +69,11 @@ client.background #002B36
 
 
 # Fond d'écran
-exec_always --no-startup-id nitrogen --restore &
+# exec_always --no-startup-id nitrogen --restore &
 # exec_always --no-startup-id ~/.config/i3/bing-wallpaper.sh
-# exec_always --no-startup-id ~/.config/i3/unsplash-wallpaper.sh
+exec_always --no-startup-id ~/.config/i3/unsplash-wallpaper.sh
 # if you don’t manually set your wallpaper, it will be anything but the right one.
-#exec_always  --no-startup-id feh --bg-scale ~/Images/yytuiwlkdy421.jpg
-# 42378019_rmqhlis.jpg
-# l_ash15_big.jpg
-# yytuiwlkdy421.jpg
+#exec_always  --no-startup-id feh --bg-scale ~/Images/wallpaper.jpg
 
 ###############BORDER##################
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
@@ -290,7 +287,7 @@ bar {
     #status_command i3blocks
     #status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks
     #i3bar_command i3bar -t
-    #status_command i3status  -c ~/.config/i3/.i3status.conf
+    #status_command i3status  -c ~/.config/i3/.i3statusback.conf
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
     #status_command i3blocks -c ~/.config/i3/i3blocks2.conf
 
@@ -375,7 +372,7 @@ smart_borders on
 set $mode_gaps Gaps ? y / n
 mode "$mode_gaps" {
         # arrow keys
-        bindsym y gaps inner current set 12 ; mode "default"
+        bindsym y gaps inner current set 6 ; mode "default"
         bindsym n gaps inner current set 0 ; mode "default"
 
         # back to normal: Enter or Escape
@@ -457,12 +454,14 @@ bindsym $mod+k move workspace to output right
 
 
 # Dual screen
-exec_always --no-startup-id xrandr --output HDMI-1 --auto --right-of DP-1
+exec_always --no-startup-id xrandr --output eDP1 --primary
+# exec_always --no-startup-id xrandr --output HDMI-1 --auto --right-of DP-1-2
+# exec –no-startup-id xrandr –output DP1-2 –right-of DP1-1 –auto
 
 # Notif
-exec_always --no-startup-id "killall -q dunst; dunst -config ~/.config/i3/notif"
+exec_always --no-startup-id "killall -q dunst; dunst -config ~/.config/i3/dunstrc"
 #exec killall -q notify-osd
-#exec --no-startup-id dunst -config ~/.config/i3/notif
+#exec --no-startup-id dunst -config ~/.config/i3/dunstrc
 
 bindsym $mod+w exec --no-startup-id "~/.config/i3/select-workspace.sh";
 

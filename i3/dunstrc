@@ -75,7 +75,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing windowmanager is
     # present (e.g. xcompmgr, compiz, etc.).
-    transparency = 0
+    transparency = 10
 
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
@@ -151,9 +151,7 @@
     #icon_folders = /usr/share/icons/Flattr/status/scalable/:/usr/share/icons/Flattr/devices/scalable/
 
 [frame]
-    #width = 3
-    #color = "#aaaaaa"
-    width = 0
+    width = 1
     color = "#81a2be"
 
 [shortcuts]
@@ -182,17 +180,17 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#F0C674"
     foreground = "#1d1f21"
-    timeout = 5
+    timeout = 10
 
 [urgency_normal]
-    background = "#F0C674"
-    foreground = "#1d1f21"
-    timeout = 5
+    background = "#285577"
+    foreground = "#ffffff"
+    timeout = 10
 
 [urgency_critical]
     background = "#DE935F"
     foreground = "#1d1f21"
-    timeout = 0
+    timeout = 5
 
 
 # Every section that isn't one of the above is interpreted as a rules to
