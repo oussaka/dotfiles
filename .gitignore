@@ -1,3 +1,4 @@
 # Local configuration files
 *.local
 .extra
+*.exclude
