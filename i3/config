@@ -173,12 +173,12 @@ bindsym $mod+q focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1 Home "
-set $ws2 "2 Firefox "
-set $ws3 "3 terminal "
-set $ws4 "4 code "
-set $ws5 "5  messaging"
-set $ws6 "6"
+set $ws1 "1: Home "
+set $ws2 2: Firefox 
+set $ws3 3: terminal 
+set $ws4 4: PhpStorm 
+set $ws5 5: SublimeText 
+set $ws6 "6  messaging"
 set $ws7 "7 "
 set $ws8 "8"
 set $ws9 "9"
@@ -218,19 +218,26 @@ bindsym $mod+Shift+ccedilla move container to workspace $ws9
 bindsym $mod+Shift+agrave move container to workspace $ws10
 
 # Assign apps to workspaces
-assign[class="Thunar"] $ws1
-assign[class="Firefox|chromium-browser" window_type="normal"] $ws2
-assign[class="Emacs"] $ws3
-assign[class="jetbrains-phpstorm" window_type="normal"] $ws4
-assign[class="Thunderbird"] $w5
-assign[class="nemo | nautilus | thunar"] $ws7
-assign[class="libreoffice-startcenter"] $ws8
+assign [class="Thunar|Rocket.Chat"] → $ws1
+assign [class="Thunderbird|Evolution"] → $ws1
+assign [class="Firefox|chromium-browser|Google-chrome|Vivaldi-stable|Opera" window_type="normal"] → $ws2
+assign [class="Emacs|terminal|Gnome-terminal"] → $ws3
+assign [class="jetbrains-phpstorm" window_type="normal"] → $ws4
+assign [class="jetbrains-phpstorm" window_type="normal"] → $ws4
+assign [class="jetbrains-webstorm" window_type="normal"] → $ws4
+assign [class="sublime-text|sublime_text|Sublime_text" window_type="normal"] → $ws5
 
-# # Assign workspaces to output
-# workspace "$w1" output DP-1
-# workspace "$w2" output HDMI-1
-# workspace "$w3" output HDMI-1
-# workspace "$w4" output DP-1
+assign [class="Thunderbird|evolution"] → $ws6
+assign [class="nemo|nautilus|thunar"] → $ws7
+# assign [class="libreoffice-startcenter"] → $ws8
+
+# Assign workspaces to output
+workspace $ws1 output primary
+#workspace "$ws1" output eDP-1
+workspace "$ws2" output DP-1-1
+workspace "$ws3" output DP-1-2
+workspace "$ws4" output DP-1-2
+workspace "$ws5" output DP-1-2
 #
 # for_window [class="Photoshop.exe" window_type="normal"] floating enable,  resize set 1920 1080
 # for_window [window_role="pop-up"] floating enable
@@ -281,8 +288,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
     position top
-    font xft:Input Mono 9
-    #font pango:Roboto 9, FontAwesome 9
+    font pango:Roboto 9, FontAwesome 9
 
     #status_command i3blocks
     #status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks
@@ -299,7 +305,7 @@ bar {
     #bindsym button4 nop
     #bindsym button5 nop
 #   font xft:URWGothic-Book 11
-    strip_workspace_numbers yes
+    strip_workspace_numbers no
 
         colors {
                 background      $bg-color
@@ -452,7 +458,6 @@ bindsym $mod+j move workspace to output left
 bindsym $mod+k move workspace to output right
 
 
-
 # Dual screen
 exec_always --no-startup-id xrandr --output eDP1 --primary
 # exec_always --no-startup-id xrandr --output HDMI-1 --auto --right-of DP-1-2
@@ -503,7 +508,12 @@ for_window [window_type="menu"] floating enable
 for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move down $height px
 for_window [class="(?i)qemu-system"] floating enable
 for_window [class="(?i)VirtualBox" title="(?i)Manager"] floating enable
-for_window [class="(?i)VirtualBox"] floating enable
+for_window [class="(?i)VirtualBox"] floating enable border pixel 1
+
+for_window [class="Emacs|terminal|Gnome-terminal"] floating enable
+for_window [class="Emacs|terminal|Gnome-terminal"] border pixel 1
+for_window [class="Emacs|terminal|Gnome-terminal"] resize set 1624 1024
+
 for_window [class="(?i)blueman"] floating enable
 for_window [class="(?i)pinentry"] floating enable
 for_window [class="(?i)nm-connection-editor"] floating enable
