@@ -29,6 +29,29 @@ Plug 'kien/ctrlp.vim'
 Plug 'chr4/nginx.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
+
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown'
+Plug 'cespare/vim-toml'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'scrooloose/syntastic'
+Plug 'easymotion/vim-easymotion'
+Plug 'editorconfig/editorconfig-vim'
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+""" Colorscheme
+Plug 'dylanaraps/wal.vim'
+Plug 'whatyouhide/vim-gotham'
+Plug 'altercation/vim-colors-solarized'
+"Plug 'lilydjwg/colorizer'
+Plug 'tomasr/molokai'
+Plug 'morhetz/gruvbox'
+
+
 call plug#end()
 endif
 " vim-plug does not require any extra statement other than plug#begin()
@@ -43,7 +66,7 @@ set autoindent
 set backspace=indent,eol,start
 set hidden
 set hlsearch
-set laststatus=2
+"set laststatus=2
 set noshowmode
 set mouse=a
 set noundofile
@@ -51,6 +74,7 @@ set number
 set wildmenu
 set autochdir
 set noswapfile
+set showmatch                    " highlight matching [{()}]
 
 let mapleader = ","
 
@@ -58,13 +82,37 @@ let mapleader = ","
 "-----------------------------------------
 " misc.
 "-----------------------------------------
-" Theme
+" Theme Set Colorscheme and Statusline {{{
 try
-    colorscheme nord
+    colorscheme wal
+    "colorscheme molokai
+    "colorscheme gruvbox
 catch /^Vim\%((\a\+)\)\=:E185/
     " deal with it
 endtry
-let g:lightline = {'colorscheme': 'nord'}
+
+"let g:gruvbox_contrast_dark = 'hard'
+"let g:gruvbox_contrast_dark = 'soft'
+"let g:gruvbox_termcolors=16
+
+"set background=dark
+
+"let g:molokai_original = 1
+"let g:rehash256 = 1
+
+"" Status line
+set laststatus=2
+set t_Co=256
+
+let g:lightline = {'colorscheme': 'gotham'}
+let g:lightline = {
+  \     'active': {
+  \         'left': [['mode', 'paste' ], ['readonly', 'filename', 'modified']],
+  \         'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding']]
+  \     }
+  \ }
+"}}}
+
 
 " Buffer
 nnoremap gb :ls<CR>:b<Space>
