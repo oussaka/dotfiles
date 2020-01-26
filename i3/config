@@ -223,9 +223,8 @@ assign [class="Thunderbird|Evolution"] → $ws1
 assign [class="Firefox|chromium-browser|Google-chrome|Vivaldi-stable|Opera" window_type="normal"] → $ws2
 assign [class="Emacs|terminal|Gnome-terminal"] → $ws3
 assign [class="jetbrains-phpstorm" window_type="normal"] → $ws4
-assign [class="jetbrains-phpstorm" window_type="normal"] → $ws4
-assign [class="jetbrains-webstorm" window_type="normal"] → $ws4
 assign [class="sublime-text|sublime_text|Sublime_text" window_type="normal"] → $ws5
+assign [class="Skype" window_type="normal"] → $ws9
 
 assign [class="Thunderbird|evolution"] → $ws6
 assign [class="nemo|nautilus|thunar"] → $ws7
@@ -294,8 +293,7 @@ bar {
     #status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks
     #i3bar_command i3bar -t
     #status_command i3status  -c ~/.config/i3/.i3statusback.conf
-    status_command i3blocks -c ~/.config/i3/i3blocks.conf
-    #status_command i3blocks -c ~/.config/i3/i3blocks2.conf
+    status_command SCRIPT_DIR=~/.config/i3blocks-contrib i3blocks -c ~/.config/i3/i3blocks.conf
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 #   tray_output primary
@@ -336,10 +334,10 @@ bar {
 exec_always --no-startup-id "killall -q compton; compton --config ~/.config/i3/compton.conf"
 #exec_always --no-startup-id compton --config ~/.config/compton.conf
 
-#exec compton -f --config ~/.config/compton.conf
-#exec --no-startup-id compton --opacity-rule '100:window_type = "dock" && class_g = "i3bar"' --config ~/.config/compton.conf -b
-#exec thunar
-#exec i3-sensible-terminal
+# exec compton -f --config ~/.config/compton.conf
+# exec --no-startup-id compton --opacity-rule '100:window_type = "dock" && class_g = "i3bar"' --config ~/.config/compton.conf -b
+exec thunar
+exec i3-sensible-terminal
 
 # exec --no-startup-id discord
 # exec --no-startup-id spotify
@@ -434,6 +432,7 @@ exec_always --no-startup-id "killall polybar;polybar -r center & polybar -r left
 bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+       # increase sound volume
 bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-       # decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
 # Sreen brightness controls
 #bindsym XF86MonBrightnessUp exec xbacklight + 10                        # increase screen brightness
 #bindsym XF86MonBrightnessDown exec xbacklight - 10                      # decrease screen brightness
@@ -510,9 +509,9 @@ for_window [class="(?i)qemu-system"] floating enable
 for_window [class="(?i)VirtualBox" title="(?i)Manager"] floating enable
 for_window [class="(?i)VirtualBox"] floating enable border pixel 1
 
-for_window [class="Emacs|terminal|Gnome-terminal"] floating enable
+for_window [class="Emacs|terminal|Gnome-terminal"] floating disable, move down 60 px
 for_window [class="Emacs|terminal|Gnome-terminal"] border pixel 1
-for_window [class="Emacs|terminal|Gnome-terminal"] resize set 1624 1024
+for_window [class="Emacs|terminal|Gnome-terminal"] resize set 1180 600
 
 for_window [class="(?i)blueman"] floating enable
 for_window [class="(?i)pinentry"] floating enable
@@ -525,6 +524,12 @@ for_window [class="(?i)recordmydesktop"] floating enable
 
 for_window [class="(?i)pavucontrol"] floating enable, move position mouse
 for_window [class="(?i)pavucontrol" instance="pavucontrol-bar"] move down $height px
+
+# use tiling mode only for main/chat Skype window and floating of all dialogs
+# Skype main window title looks like this - "alexey.diyan - Skype™"
+for_window [instance="skype" title="^.*?(?<!Skype™)$"] floating enable
+#for_window [instance="skype" title="Skype™|Call with|File Transfers"] floating disable
+#for_window [class="^Skype$"] move window to output primary floating enable, resize set 1300px 1050px, move position 50px 50px, move to workspace $ws9
 
 #assign [class="(?i)chrome"]                       $ws1
 #assign [class="(?i)eclipse" window_type="splash"] $ws3
@@ -556,3 +561,4 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 bindsym $mod+Pause mode "$mode_system"
+for_window [class="Yad"] floating enable

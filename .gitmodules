@@ -1,3 +1,9 @@
 [submodule "i3lock-color"]
 	path = i3lock-color
 	url = https://github.com/PandorasFox/i3lock-color.git
+# [submodule "i3blocks"]
+# 	path = i3blocks
+# 	url = git@github.com:vivien/i3blocks.git
+[submodule "i3blocks-contrib"]
+	path = i3blocks-contrib
+	url = git@github.com:vivien/i3blocks-contrib.git
