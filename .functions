@@ -173,6 +173,18 @@ project () {
     echo "In project $1"
 }
 
+dclean() {
+    processes=`docker ps -q -f status=exited`
+    if [ -n "$processes" ]; then
+      docker rm $processes
+    fi
+
+    images=`docker images -q -f dangling=true`
+    if [ -n "$images" ]; then
+      docker rmi $images
+    fi
+}
+
 # This should be the last line of the file
 # For local changes
 # Don't make edits below this
