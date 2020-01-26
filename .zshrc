@@ -116,3 +116,5 @@ source /usr/share/fonts/awesomefonts/*.sh
 if [ -f ~/.bash_profile ]; then
     . ~/.bash_profile;
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
